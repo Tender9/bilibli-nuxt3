@@ -48,7 +48,7 @@ const { videoList } = defineProps(["videoList"]);
 // 列表数据
 const list = ref<VideoItem[]>([]);
 
-// 显示加载中
+// 是否显示加载中
 const loading = ref(false);
 
 // 是否加载完成
@@ -56,16 +56,22 @@ const finished = ref(false);
 
 let page = 1;
 let pageSize = 10;
+let fistLoad = 0;
 
 // 触底加载
 const onLoad = () => {
     // 表示正在加载
-    loading.value = false;
+
+    if (fistLoad) loading.value = true;
+
+    fistLoad++;
 
     // 左闭右开区间 [0,10)
     const listData = videoList?.slice((page - 1) * pageSize, page * pageSize) as VideoItem[];
 
-    list.value.push(...listData);
+    setTimeout(() => {
+        list.value.push(...listData);
+    }, 1000);
 
     page++;
 
@@ -93,7 +99,7 @@ onLoad();
         border-radius: 2px;
         overflow: hidden;
         .card-img {
-            width: 192px;
+            width: 100%;
             height: 100px;
             .pic {
                 height: 100%;

@@ -98,8 +98,8 @@ onMounted(async () => {});
 
 <style lang="scss" scoped>
 .video-play {
-    width: 100vw;
-    height: auto;
+    width: 100%;
+    height: 210px;
     object-fit: contain;
     background-color: #fff;
 }

@@ -3,7 +3,6 @@
 <template>
     <div class="app_main">
         <AppHeader />
-
         <!-- 频道模块 -->
         <van-tabs>
             <van-tab

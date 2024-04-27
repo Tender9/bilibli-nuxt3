@@ -27,4 +27,8 @@ useSeoMeta({
     --van-back-top-background: #fbfbfb !important;
     --van-back-top-text-color: #666 !important;
 }
+body {
+    max-width: 450px;
+    margin: 0 auto !important;
+}
 </style>
