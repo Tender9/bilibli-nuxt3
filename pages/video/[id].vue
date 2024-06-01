@@ -48,107 +48,107 @@
 </template>
 
 <script setup>
-import AppHeader from "~/components/AppHeader.vue";
+    import AppHeader from "~/components/AppHeader.vue";
 
-import AppVideoList from "~/components/AppVideoList.vue";
+    import AppVideoList from "~/components/AppVideoList.vue";
 
-const {
-    data: { value: videoList },
-} = await useFetch("/api/video/recommend");
+    const {
+        data: { value: videoList },
+    } = await useFetch("/api/video/recommend");
 
-// 请求接口获取视频
-const { id } = useRoute().params;
+    // 请求接口获取视频
+    const { id } = useRoute().params;
 
-const { data } = await useFetch(`/api/video/${id}`);
+    const { data } = await useFetch(`/api/video/${id}`);
 
-// 弹幕结构
-const barrageRef = ref();
+    // 弹幕结构
+    const barrageRef = ref();
 
-// 视频结构
-const videoRef = ref();
+    // 视频结构
+    const videoRef = ref();
 
-// 视频播放
-const onPlay = () => {
-    barrageRef.value?.play();
-};
+    // 视频播放
+    const onPlay = () => {
+        barrageRef.value?.play();
+    };
 
-// 视频暂停
-const onPause = () => {
-    barrageRef.value?.pause();
-};
+    // 视频暂停
+    const onPause = () => {
+        barrageRef.value?.pause();
+    };
 
-// SEO优化
-useSeoMeta({
-    title: `${data.value?.title}_哔哩哔哩bilibili_${data.value?.author.name}`,
-});
+    // SEO优化
+    useSeoMeta({
+        title: `${data.value?.title}_哔哩哔哩bilibili_${data.value?.author.name}`,
+    });
 
-// 弹幕列表
-const defaultList = ref([
-    { id: 100, text: "轻量" },
-    { id: 101, text: "可定制的" },
-    { id: 102, text: "移动端" },
-    { id: 103, text: "Vue" },
-    { id: 104, text: "组件库" },
-    { id: 105, text: "VantUI" },
-    { id: 106, text: "666" },
-]);
+    // 弹幕列表
+    const defaultList = ref([
+        { id: 100, text: "轻量" },
+        { id: 101, text: "可定制的" },
+        { id: 102, text: "移动端" },
+        { id: 103, text: "Vue" },
+        { id: 104, text: "组件库" },
+        { id: 105, text: "VantUI" },
+        { id: 106, text: "666" },
+    ]);
 
-onMounted(async () => {});
+    onMounted(async () => {});
 </script>
 
 <style lang="scss" scoped>
-.video-play {
-    width: 100%;
-    height: 210px;
-    object-fit: contain;
-    background-color: #fff;
-}
-
-.info {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-    .title-text {
-        font-size: 16px;
-        font-weight: normal;
+    .video-play {
+        width: 100%;
+        height: 210px;
+        object-fit: contain;
+        background-color: #fff;
     }
 
-    .body {
-        display: flex;
-        margin-top: 20px;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .author {
-        display: flex;
-        align-items: center;
-        .avatar {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            border: 1px solid #ccc;
+    .info {
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+        .title-text {
+            font-size: 16px;
+            font-weight: normal;
         }
-        .name {
-            margin-left: 10px;
+
+        .body {
+            display: flex;
+            margin-top: 20px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .author {
+            display: flex;
+            align-items: center;
+            .avatar {
+                width: 28px;
+                height: 28px;
+                border-radius: 50%;
+                border: 1px solid #ccc;
+            }
+            .name {
+                margin-left: 10px;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .relate {
+        .relate-title {
+            height: 32px;
+            display: flex;
+            align-items: center;
             font-size: 14px;
+            font-weight: normal;
+            padding: 0 10px;
+            color: #333;
+        }
+        .relate-list {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 5px;
         }
     }
-}
-
-.relate {
-    .relate-title {
-        height: 32px;
-        display: flex;
-        align-items: center;
-        font-size: 14px;
-        font-weight: normal;
-        padding: 0 10px;
-        color: #333;
-    }
-    .relate-list {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 0 5px;
-    }
-}
 </style>

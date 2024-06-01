@@ -1,5 +1,3 @@
-/** @format */
-
 import videos from "@/server/database/video.js";
 
 export default defineEventHandler((event) => {

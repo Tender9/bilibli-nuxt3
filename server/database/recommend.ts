@@ -1,5 +1,3 @@
-/** @format */
-
 export default [
     {
         aid: 361335669,

@@ -1,5 +1,3 @@
-/** @format */
-
 export interface Author {
     mid: number;
     name: string;
